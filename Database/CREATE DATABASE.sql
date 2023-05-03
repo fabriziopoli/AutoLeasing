@@ -39,6 +39,14 @@ CREATE TABLE Wartung_Reparatur (
     FOREIGN KEY (FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
 );
 
+CREATE TABLE Wartung_Reparatur_Fahrzeug (
+    ReparaturID INT,
+    FahrzeugID INT,
+    PRIMARY KEY (ReparaturID, FahrzeugID),
+    FOREIGN KEY (ReparaturID) REFERENCES Wartung_Reparatur (ReparaturID),
+    FOREIGN KEY (FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
+);
+
 CREATE TABLE Zahlungshistorie (
     ZahlungsID INT PRIMARY KEY IDENTITY(1,1),
     VertragsID INT,
