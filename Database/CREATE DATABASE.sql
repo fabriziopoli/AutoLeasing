@@ -1,4 +1,6 @@
+drop AutoleasingDB if exists;
 CREATE DATABASE AutoleasingDB;
+go
 USE AutoleasingDB;
 
 CREATE TABLE Fahrzeug (
