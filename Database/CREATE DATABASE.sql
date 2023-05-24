@@ -1,7 +1,14 @@
-drop AutoleasingDB if exists;
+use master;
+go
+
+drop database if exists AutoleasingDB;
+go
+
 CREATE DATABASE AutoleasingDB;
 go
+
 USE AutoleasingDB;
+go
 
 CREATE TABLE Fahrzeug (
     FahrzeugID INT PRIMARY KEY IDENTITY(1,1),
@@ -21,39 +28,39 @@ CREATE TABLE Kunde (
 
 CREATE TABLE Leasingvertrag (
     VertragsID INT PRIMARY KEY IDENTITY(1,1),
-    FahrzeugID INT,
-    KundenID INT,
+    fk_FahrzeugID INT,
+    fk_KundenID INT,
     Vertragsbeginn DATE,
     Vertragsende DATE,
     Vertragslaufzeit INT,
     MonatlicheZahlungen DECIMAL(10, 2),
     Restwert DECIMAL(10, 2),
-    FOREIGN KEY (FahrzeugID) REFERENCES Fahrzeug (FahrzeugID),
-    FOREIGN KEY (KundenID) REFERENCES Kunde (KundenID)
+    FOREIGN KEY (fk_FahrzeugID) REFERENCES Fahrzeug (FahrzeugID),
+    FOREIGN KEY (fk_KundenID) REFERENCES Kunde (KundenID)
 );
 
 CREATE TABLE Wartung_Reparatur (
     ReparaturID INT PRIMARY KEY IDENTITY(1,1),
-    FahrzeugID INT,
+    fk_FahrzeugID INT,
     Beschreibung VARCHAR(200),
     Datum DATE,
     Kosten DECIMAL(10, 2),
-    FOREIGN KEY (FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
+    FOREIGN KEY (fk_FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
 );
 
 CREATE TABLE Wartung_Reparatur_Fahrzeug (
     ReparaturID INT,
     FahrzeugID INT,
     PRIMARY KEY (ReparaturID, FahrzeugID),
-    FOREIGN KEY (ReparaturID) REFERENCES Wartung_Reparatur (ReparaturID),
-    FOREIGN KEY (FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
+    FOREIGN KEY (fk_ReparaturID) REFERENCES Wartung_Reparatur (ReparaturID),
+    FOREIGN KEY (fk_FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
 );
 
 CREATE TABLE Zahlungshistorie (
     ZahlungsID INT PRIMARY KEY IDENTITY(1,1),
-    VertragsID INT,
+    fk_VertragsID INT,
     Betrag DECIMAL(10, 2),
     Datum DATE,
     Status BIT,
-    FOREIGN KEY (VertragsID) REFERENCES Leasingvertrag (VertragsID)
+    FOREIGN KEY (fk_VertragsID) REFERENCES Leasingvertrag (VertragsID)
 );
