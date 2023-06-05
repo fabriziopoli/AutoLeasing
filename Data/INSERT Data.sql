@@ -1,5 +1,11 @@
+-- AutoLeasing --
+
 use AutoleasingDB;
 go
+
+-- ******************************************************************
+-- * Fahrzeug Tabelle befuellen.                             
+-- ******************************************************************
 INSERT INTO Fahrzeug (Marke, Modell, Baujahr, Preis) VALUES
 ('Audi', 'R8', 2021, 190000),
 ('Mercedes-Benz', 'S 63 AMG', 2022, 230000),
@@ -22,6 +28,9 @@ INSERT INTO Fahrzeug (Marke, Modell, Baujahr, Preis) VALUES
 ('Maserati', 'GranTurismo', 2022, 180000),
 ('Aston Martin', 'DB11', 2021, 240000);
 
+-- ******************************************************************
+-- * Kunde Tabelle befuellen.                             
+-- ******************************************************************
 INSERT INTO Kunde (Vorname, Nachname, Adresse, Geburtsdatum) VALUES
 ('Laura', 'Wagner', 'Bundesplatz 15, 6003 Luzern', '1992-09-21'),
 ('Philipp', 'Schneider', 'Hirschengraben 22, 3011 Bern', '1987-04-03'),
@@ -44,6 +53,9 @@ INSERT INTO Kunde (Vorname, Nachname, Adresse, Geburtsdatum) VALUES
 ('Stefanie', 'Keller', 'Hauptstrasse 5, 8953 Dietikon', '1994-07-17'),
 ('Patrick', 'Schwarz', 'Lindenweg 12, 6340 Baar', '1986-12-31');
 
+-- ******************************************************************
+-- * Leasingvertrag Tabelle befuellen.                             
+-- ******************************************************************
 INSERT INTO Leasingvertrag (FahrzeugID, KundenID, Vertragsbeginn, Vertragsende, Vertragslaufzeit, MonatlicheZahlungen) VALUES 
 (1, 3, '2022-01-01', '2024-01-01', 24, 1250.00),
 (2, 4, '2022-02-15', '2024-02-15', 24, 900.00),
@@ -64,8 +76,11 @@ INSERT INTO Leasingvertrag (FahrzeugID, KundenID, Vertragsbeginn, Vertragsende, 
 (17, 19, '2023-05-15', '2025-05-15', 24, 2500.00),
 (18, 20, '2023-06-01', '2025-06-01', 24, 1900.00),
 (19, 2, '2023-07-01', '2025-07-01', 24, 2200.00),
-(20, 1, '2023-08-15', '2025-08-15', 24, 1600.00);;
+(20, 1, '2023-08-15', '2025-08-15', 24, 1600.00);
 
+-- ******************************************************************
+-- * Wartung_Reparatur Tabelle befuellen.                             
+-- ******************************************************************
 INSERT INTO Wartung_Reparatur (FahrzeugID, Beschreibung, Datum, Kosten) VALUES 
 (1, 'Bremsen erneuern', '2022-04-01', 1200.00),
 (2, 'Ölwechsel', '2022-03-15', 300.00),
@@ -88,6 +103,9 @@ INSERT INTO Wartung_Reparatur (FahrzeugID, Beschreibung, Datum, Kosten) VALUES
 (19, 'Airbag reparieren', '2022-11-28', 700.00),
 (20, 'Lenkung überprüfen', '2022-12-15', 400.00);
 
+-- ******************************************************************
+-- * Zahlungshistorie Tabelle befuellen.                             
+-- ******************************************************************
 INSERT INTO Zahlungshistorie (VertragsID, Betrag, Datum, Status) VALUES 
 (10, 1500.00, '2022-01-01', 1),
 (11, 1500.00, '2022-09-21', 1),
@@ -110,6 +128,9 @@ INSERT INTO Zahlungshistorie (VertragsID, Betrag, Datum, Status) VALUES
 (28, 1750.50, '2023-01-28', 1),
 (29, 2000.00, '2023-02-04', 1);
 
+-- ******************************************************************
+-- * Wartung_Reparatur_Fahrzeug Zwischentabelle befuellen.                             
+-- ******************************************************************
 INSERT INTO Wartung_Reparatur_Fahrzeug (ReparaturID, FahrzeugID) VALUES
 (1, 1), 
 (2, 1), 
@@ -131,10 +152,3 @@ INSERT INTO Wartung_Reparatur_Fahrzeug (ReparaturID, FahrzeugID) VALUES
 (15, 7),
 (16, 8),
 (17, 9);
-
-
-
-
-
-
-
