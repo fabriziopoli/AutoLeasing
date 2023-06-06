@@ -58,3 +58,5 @@ EXEC AddFahrzeug @Marke = 'Ford Mustang', @Modell = '289', @Baujahr = 1965, @Pre
 -- * Test zum Procedure AddFahrzeug.            
 -- ******************************************************************
 SELECT * FROM Fahrzeug WHERE Marke = 'Ford Mustang' AND Modell = '289';
+SELECT * FROM Fahrzeug WHERE FahrzeugID = @@IDENTITY
+DELETE FROM Fahrzeug WHERE Marke = 'Ford Mustang';

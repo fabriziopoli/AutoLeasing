@@ -39,3 +39,9 @@ END
 -- ******************************************************************
 EXEC GetLeasingVertragDetails
   @VertragsID = 11; 
+
+EXEC GetLeasingVertragDetails
+ @VertragsID = 13; 
+
+EXEC GetLeasingVertragDetails
+  @VertragsID = 15; 
