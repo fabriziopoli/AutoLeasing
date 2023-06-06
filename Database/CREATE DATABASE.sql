@@ -72,9 +72,9 @@ CREATE TABLE Wartung_Reparatur (
 -- * Wartung_Reparatur_Fahrzeug Tabelle erstellen.            
 -- ******************************************************************
 CREATE TABLE Wartung_Reparatur_Fahrzeug (
-    ReparaturID INT,
-    FahrzeugID INT,
-    PRIMARY KEY (ReparaturID, FahrzeugID),
+    fk_ReparaturID INT,
+    fk_FahrzeugID INT,
+    PRIMARY KEY (fk_ReparaturID, fk_FahrzeugID),
     FOREIGN KEY (fk_ReparaturID) REFERENCES Wartung_Reparatur (ReparaturID),
     FOREIGN KEY (fk_FahrzeugID) REFERENCES Fahrzeug (FahrzeugID)
 );
