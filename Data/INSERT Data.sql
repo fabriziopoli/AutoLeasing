@@ -56,7 +56,7 @@ INSERT INTO Kunde (Vorname, Nachname, Adresse, Geburtsdatum) VALUES
 -- ******************************************************************
 -- * Leasingvertrag Tabelle befuellen.                             
 -- ******************************************************************
-INSERT INTO Leasingvertrag (FahrzeugID, KundenID, Vertragsbeginn, Vertragsende, Vertragslaufzeit, MonatlicheZahlungen) VALUES 
+INSERT INTO Leasingvertrag (fk_FahrzeugID, fk_KundenID, Vertragsbeginn, Vertragsende, Vertragslaufzeit, MonatlicheZahlungen) VALUES 
 (1, 3, '2022-01-01', '2024-01-01', 24, 1250.00),
 (2, 4, '2022-02-15', '2024-02-15', 24, 900.00),
 (3, 5, '2022-03-01', '2024-03-01', 24, 1100.00),
@@ -81,7 +81,7 @@ INSERT INTO Leasingvertrag (FahrzeugID, KundenID, Vertragsbeginn, Vertragsende, 
 -- ******************************************************************
 -- * Wartung_Reparatur Tabelle befuellen.                             
 -- ******************************************************************
-INSERT INTO Wartung_Reparatur (FahrzeugID, Beschreibung, Datum, Kosten) VALUES 
+INSERT INTO Wartung_Reparatur (fk_FahrzeugID, Beschreibung, Datum, Kosten) VALUES 
 (1, 'Bremsen erneuern', '2022-04-01', 1200.00),
 (2, 'Ölwechsel', '2022-03-15', 300.00),
 (3, 'Klimaanlage reparieren', '2022-05-10', 800.00),
@@ -106,7 +106,7 @@ INSERT INTO Wartung_Reparatur (FahrzeugID, Beschreibung, Datum, Kosten) VALUES
 -- ******************************************************************
 -- * Zahlungshistorie Tabelle befuellen.                             
 -- ******************************************************************
-INSERT INTO Zahlungshistorie (VertragsID, Betrag, Datum, Status) VALUES 
+INSERT INTO Zahlungshistorie (fk_VertragsID, Betrag, Datum, Status) VALUES 
 (10, 1500.00, '2022-01-01', 1),
 (11, 1500.00, '2022-09-21', 1),
 (12, 1750.50, '2022-02-05', 1),
@@ -131,7 +131,7 @@ INSERT INTO Zahlungshistorie (VertragsID, Betrag, Datum, Status) VALUES
 -- ******************************************************************
 -- * Wartung_Reparatur_Fahrzeug Zwischentabelle befuellen.                             
 -- ******************************************************************
-INSERT INTO Wartung_Reparatur_Fahrzeug (ReparaturID, FahrzeugID) VALUES
+INSERT INTO Wartung_Reparatur_Fahrzeug (fk_ReparaturID, fk_FahrzeugID) VALUES
 (1, 1), 
 (2, 1), 
 (2, 2), 
