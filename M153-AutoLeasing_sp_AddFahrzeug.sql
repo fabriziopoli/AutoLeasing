@@ -47,16 +47,28 @@ BEGIN
     -- Insert-Anweisung ausführen
     INSERT INTO Fahrzeug (Marke, Modell, Baujahr, Preis)
     VALUES (@Marke, @Modell, @Baujahr, @Preis)
+    RETURN 1
 END
+go
 
 -- ******************************************************************
 -- * AddFahrzeug ausfuehren.              
 -- ******************************************************************
-EXEC AddFahrzeug @Marke = 'Ford Mustang', @Modell = '289', @Baujahr = 1965, @Preis = 77423;
+EXEC AddFahrzeug @Marke = 'Ford', @Modell = 'Mustang', @Baujahr = 1965, @Preis = 77423;
 
 -- ******************************************************************
 -- * Test zum Procedure AddFahrzeug.            
 -- ******************************************************************
-SELECT * FROM Fahrzeug WHERE Marke = 'Ford Mustang' AND Modell = '289';
-SELECT * FROM Fahrzeug WHERE FahrzeugID = @@IDENTITY
-DELETE FROM Fahrzeug WHERE Marke = 'Ford Mustang';
+
+-- Test 1.0: Fügt den Ford Mustang zur Fahrzeug Tabelle hinzu und
+-- Testet ob der Ford Mustang vorhanden ist.
+EXEC AddFahrzeug @Marke = 'Ford', @Modell = 'Mustang', @Baujahr = 1965, @Preis = 77423;
+SELECT * FROM Fahrzeug WHERE Marke = 'Ford' AND Modell = 'Mustang';
+
+-- Test 2.0: Fügt den Dodge Charger zur Fahrzeug Tabelle hinzu und
+-- Testet ob der Dodge Charger vorhanden ist.
+EXEC AddFahrzeug @Marke = 'Dodge', @Modell = 'Charger', @Baujahr = 1971, @Preis = 89900;
+SELECT * FROM Fahrzeug WHERE Marke = 'Dodge' AND Modell = 'Charger';
+
+-- Test 3.0: Gibt ein Error zurück das die Parameter nicht NULL sein dürfen.
+EXEC AddFahrzeug @Marke = NULL, @Modell = NULL, @Baujahr = NULL, @Preis = NULL;

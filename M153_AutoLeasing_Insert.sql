@@ -27,6 +27,7 @@ INSERT INTO Fahrzeug (Marke, Modell, Baujahr, Preis) VALUES
 ('Nissan', 'GT-R', 2021, 70000),
 ('Maserati', 'GranTurismo', 2022, 180000),
 ('Aston Martin', 'DB11', 2021, 240000);
+go
 
 -- ******************************************************************
 -- * Kunde Tabelle befuellen.                             
@@ -52,6 +53,7 @@ INSERT INTO Kunde (Vorname, Nachname, Adresse, Geburtsdatum) VALUES
 ('Thomas', 'Bachmann', 'Zugerstrasse 30, 6330 Cham', '1989-10-06'),
 ('Stefanie', 'Keller', 'Hauptstrasse 5, 8953 Dietikon', '1994-07-17'),
 ('Patrick', 'Schwarz', 'Lindenweg 12, 6340 Baar', '1986-12-31');
+go
 
 -- ******************************************************************
 -- * Leasingvertrag Tabelle befuellen.                             
@@ -77,6 +79,7 @@ INSERT INTO Leasingvertrag (fk_FahrzeugID, fk_KundenID, Vertragsbeginn, Vertrags
 (18, 20, '2023-06-01', '2025-06-01', 24, 1900.00),
 (19, 2, '2023-07-01', '2025-07-01', 24, 2200.00),
 (20, 1, '2023-08-15', '2025-08-15', 24, 1600.00);
+go
 
 -- ******************************************************************
 -- * Wartung_Reparatur Tabelle befuellen.                             
@@ -102,6 +105,7 @@ INSERT INTO Wartung_Reparatur (fk_FahrzeugID, Beschreibung, Datum, Kosten) VALUE
 (18, 'Achsen ausrichten', '2022-08-20', 300.00),
 (19, 'Airbag reparieren', '2022-11-28', 700.00),
 (20, 'Lenkung überprüfen', '2022-12-15', 400.00);
+go
 
 -- ******************************************************************
 -- * Zahlungshistorie Tabelle befuellen.                             
@@ -127,6 +131,7 @@ INSERT INTO Zahlungshistorie (fk_VertragsID, Betrag, Datum, Status) VALUES
 (27, 2250.75, '2023-01-21', 0),
 (28, 1750.50, '2023-01-28', 1),
 (29, 2000.00, '2023-02-04', 1);
+go
 
 -- ******************************************************************
 -- * Wartung_Reparatur_Fahrzeug Zwischentabelle befuellen.                             
@@ -152,3 +157,4 @@ INSERT INTO Wartung_Reparatur_Fahrzeug (fk_ReparaturID, fk_FahrzeugID) VALUES
 (15, 7),
 (16, 8),
 (17, 9);
+go
